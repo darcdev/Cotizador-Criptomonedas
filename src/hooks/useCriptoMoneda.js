@@ -19,17 +19,17 @@ const Select = styled.select`
   font-size: 1.2rem;
 `;
 
-const useMoneda = (label, stateInicial, opciones) => {
+const useCriptoMoneda = (label, stateInicial, opciones) => {
   const [state, actualizarState] = useState(stateInicial);
 
-  const Seleccionar = () => (
+  const SelectCripto = () => (
     <>
       <Label>{label}</Label>
       <Select onChange={(e) => actualizarState(e.target.value)} value={state}>
-        <option value="">-- Seleccione una Moneda ---</option>
+        <option value="">-- Seleccione una Cripto Moneda ---</option>
         {opciones.map((opcion) => (
-          <option key={opcion.codigo} value={opcion.codigo}>
-            {opcion.nombre}
+          <option key={opcion.CoinInfo.Id} value={opcion.CoinInfo.Name}>
+            {opcion.CoinInfo.FullName}
           </option>
         ))}
       </Select>
@@ -38,6 +38,6 @@ const useMoneda = (label, stateInicial, opciones) => {
 
   // Retornar state , interfaz y modificador state
 
-  return [state, Seleccionar, actualizarState];
+  return [state, SelectCripto, actualizarState];
 };
-export default useMoneda;
+export default useCriptoMoneda;
